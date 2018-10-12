@@ -1,8 +1,13 @@
+
+TAR=client.elf
 LDLIBS = -lzed -lpthread
+
+SRC = client.c
+
 all: build
 
 build:
-	gcc -Llib/ -o client client.c $(LDLIBS)
+	gcc -Llib/ -o $(TAR) $(SRC) $(LDLIBS)
 
 clean:
-	rm client
+	rm $(TAR) *.o
