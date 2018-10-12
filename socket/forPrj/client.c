@@ -2,7 +2,7 @@
 * @Author: vutt6
 * @Date:   2018-10-10 17:05:30
 * @Last Modified by:   vutang
-* @Last Modified time: 2018-10-12 15:16:23
+* @Last Modified time: 2018-10-12 17:22:48
 */
 #include <stdio.h>
 #include <pthread.h>
@@ -42,10 +42,23 @@ typedef enum {
 	SOCKET_RET_ERROR
 } en_skt_ret_t;
 
-pthread_t tid_timer; /*For timer thread*/
+/*For timer*/
+typedef enum {
+	TIMER_ID_SEND_REPORT_1,
+	TIMER_ID_MAX
+} en_timer_id_t;
+
+typedef struct {
+	unsigned long start;
+	unsigned long end;
+} ls_timer_t;
+
+pthread_t gtid_timer, gtid_hwmon; /*For timer thread*/
 str_udpskt_id_t gcli_skt;
 int8_t gtest_eth_flag = 1;
 char server_ip[INET_ADDRSTRLEN];
+
+ls_timer_t timer[TIMER_ID_MAX];
 
 void send_udp_test_pattern(void);
 
@@ -57,10 +70,51 @@ void testLog() {
 	LOG_FATAL("LOG_FATAL");
 }
 
+int check_timer_expiration() {
+	int i;
+	struct timespec tp;
+
+	clock_gettime(CLOCK_MONOTONIC,&tp);
+}
+
+void timer_expired(int timerid) {
+	switch (timerid) {
+		case TIMER_ID_SEND_REPORT_1:
+			send_udp_test_pattern();
+			timer_start(1, TIMER_ID_SEND_REPORT_1);
+			break;
+		default:
+			break;
+	}
+}
+int check_expiration() {
+	int i;
+	struct timespec tp;
+
+	// read current time.
+	clock_gettime(CLOCK_MONOTONIC,&tp);
+	for (i=0; i<TIMER_ID_MAX; i++) {
+		if (timer[i].end!=0) {
+			if (((timer[i].start <= timer[i].end) && (timer[i].end <= tp.tv_sec)) ||
+				((timer[i].start > timer[i].end) && (timer[i].end >= tp.tv_sec)))  {
+				timer[i].end = 0;
+				timer[i].start =0;
+				timer_expired(i);
+			}
+		}
+	}; // end for
+	return 0;
+} 
+
 void *timer_check(void *p) {
 	while (1) {
-		if (gtest_eth_flag) 
-			send_udp_test_pattern();
+		check_expiration();
+		sleep(1);
+	}
+}
+
+void *hw_mon(void *p) {
+	while (1) {
 		sleep(1);
 	}
 }
@@ -70,8 +124,19 @@ void open_timer_thd(void) {
 	pthread_attr_init(&pthread_attr); 
 	pthread_attr_setdetachstate(&pthread_attr, PTHREAD_CREATE_DETACHED);
 
-	if (pthread_create(&tid_timer, &pthread_attr, &timer_check, NULL) != 0) {
+	if (pthread_create(&gtid_timer, &pthread_attr, &timer_check, NULL) != 0) {
 		LOG_ERROR("Create timer_check thread fail");
+	}
+	pthread_attr_destroy(&pthread_attr);
+}
+
+void open_hw_mon(void) {
+	pthread_attr_t pthread_attr;
+	pthread_attr_init(&pthread_attr); 
+	pthread_attr_setdetachstate(&pthread_attr, PTHREAD_CREATE_DETACHED);
+
+	if (pthread_create(&gtid_hwmon, &pthread_attr, &hw_mon, NULL) != 0) {
+		LOG_ERROR("Create tid_hwmon thread fail");
 	}
 	pthread_attr_destroy(&pthread_attr);
 }
@@ -139,6 +204,24 @@ void send_udp_test_pattern(void) {
 	return;
 }
 
+void init_timer() {
+	int i;
+	for (i = 0; i < TIMER_ID_MAX; i++)
+		timer[i].end = 0;
+}
+ 
+int timer_start(int timeInSecond,unsigned int timerId) {
+	struct timespec tp;
+	int error;
+	if ((timerId > TIMER_ID_MAX)||(timeInSecond<=0)) 
+		return 1;
+	// if timeInSecond = 0, just next cycle it will expired.
+	clock_gettime(CLOCK_MONOTONIC,&tp);
+	timer[timerId].end = tp.tv_sec  + timeInSecond;
+	timer[timerId].start = tp.tv_sec;
+	return 0;
+}
+
 int main(int argc, char *argv[]) {
 	int ret;
 	config_log(LOGDIR, 0x1f, 3);
@@ -154,7 +237,13 @@ int main(int argc, char *argv[]) {
 		return 1;
 	}
 
+	LOG_INFO("Open timer thread");
 	open_timer_thd();
+
+	LOG_INFO("Init timer");
+	init_timer();
+
+	timer_start(1, TIMER_ID_SEND_REPORT_1);
 	while(1);
 	return 0;
 }
