@@ -1,0 +1,76 @@
+2018-10-10 17:15:51 WARN    client.c                       #14     LOG_WARN
+2018-10-10 17:16:17 WARN    client.c                       #14     LOG_WARN
+2018-10-10 17:18:23 WARN    client.c                       #15     LOG_WARN
+2018-10-10 17:18:23 DEBUG   client.c                       #16     LOG_DEBUG
+2018-10-10 17:18:23 INFO    client.c                       #17     LOG_INFO
+2018-10-10 17:18:23 ERROR   client.c                       #18     LOG_ERROR
+2018-10-10 17:18:23 FATAL   client.c                       #19     LOG_FATAL
+2018-10-10 17:19:03 WARN    client.c                       #15     LOG_WARN
+2018-10-10 17:19:03 DEBUG   client.c                       #16     LOG_DEBUG
+2018-10-10 17:19:03 INFO    client.c                       #17     LOG_INFO
+2018-10-10 17:19:03 ERROR   client.c                       #18     LOG_ERROR
+2018-10-10 17:19:03 FATAL   client.c                       #19     LOG_FATAL
+2018-10-10 17:19:41 WARN    client.c                       #15     LOG_WARN
+2018-10-10 17:19:41 DEBUG   client.c                       #16     LOG_DEBUG
+2018-10-10 17:19:41 INFO    client.c                       #17     LOG_INFO
+2018-10-10 17:19:41 ERROR   client.c                       #18     LOG_ERROR
+2018-10-10 17:19:41 FATAL   client.c                       #19     LOG_FATAL
+2018-10-10 17:20:28 WARN    client.c             #15     LOG_WARN
+2018-10-10 17:20:28 DEBUG   client.c             #16     LOG_DEBUG
+2018-10-10 17:20:28 INFO    client.c             #17     LOG_INFO
+2018-10-10 17:20:28 ERROR   client.c             #18     LOG_ERROR
+2018-10-10 17:20:28 FATAL   client.c             #19     LOG_FATAL
+2018-10-10 17:23:36 WARN    client.c             #15     LOG_WARN
+2018-10-10 17:23:36 DEBUG   client.c             #16     LOG_DEBUG
+2018-10-10 17:23:36 INFO    client.c             #17     LOG_INFO
+2018-10-10 17:23:36 ERROR   client.c             #18     LOG_ERROR
+2018-10-10 17:23:36 FATAL   client.c             #19     LOG_FATAL
+2018-10-10 17:23:51 WARN    client.c   #13     LOG_WARN
+2018-10-10 17:23:51 DEBUG   client.c   #14     LOG_DEBUG
+2018-10-10 17:23:51 INFO    client.c   #15     LOG_INFO
+2018-10-10 17:23:51 ERROR   client.c   #16     LOG_ERROR
+2018-10-10 17:23:51 FATAL   client.c   #17     LOG_FATAL
+2018-10-10 17:25:01 WARN    client.c   #13     LOG_WARN
+2018-10-10 17:25:01 DEBUG   client.c   #14     LOG_DEBUG
+2018-10-10 17:25:01 INFO    client.c   #15     LOG_INFO
+2018-10-10 17:25:01 ERROR   client.c   #16     LOG_ERROR
+2018-10-10 17:25:01 FATAL   client.c   #17     LOG_FATAL
+2018-10-10 17:29:10 WARN    client.c   #13     LOG_WARN
+2018-10-10 17:29:10 DEBUG   client.c   #14     LOG_DEBUG
+2018-10-10 17:29:10 INFO    client.c   #15     LOG_INFO
+2018-10-10 17:29:10 ERROR   client.c   #16     LOG_ERROR
+2018-10-10 17:29:10 FATAL   client.c   #17     LOG_FATAL
+2018-10-10 17:29:50 WARN    client.c             #13     LOG_WARN
+2018-10-10 17:29:50 DEBUG   client.c             #14     LOG_DEBUG
+2018-10-10 17:29:50 INFO    client.c             #15     LOG_INFO
+2018-10-10 17:29:50 ERROR   client.c             #16     LOG_ERROR
+2018-10-10 17:29:50 FATAL   client.c             #17     LOG_FATAL
+2018-10-10 17:33:51 WARN    client.c             #13     LOG_WARN
+2018-10-10 17:33:51 DEBUG   client.c             #14     LOG_DEBUG
+2018-10-10 17:33:51 INFO    client.c             #15     LOG_INFO
+2018-10-10 17:33:51 ERROR   client.c             #16     LOG_ERROR
+2018-10-10 17:33:51 FATAL   client.c             #17     LOG_FATAL
+2018-10-10 17:46:08 WARN    client.c             #16     LOG_WARN
+2018-10-10 17:46:08 DEBUG   client.c             #17     LOG_DEBUG
+2018-10-10 17:46:08 INFO    client.c             #18     LOG_INFO
+2018-10-10 17:46:08 ERROR   client.c             #19     LOG_ERROR
+2018-10-10 17:46:08 FATAL   client.c             #20     LOG_FATAL
+2018-10-10 17:46:24 WARN    client.c             #16     LOG_WARN
+2018-10-10 17:46:24 DEBUG   client.c             #17     LOG_DEBUG
+2018-10-10 17:46:24 INFO    client.c             #18     LOG_INFO
+2018-10-10 17:46:24 ERROR   client.c             #19     LOG_ERROR
+2018-10-10 17:46:24 FATAL   client.c             #20     LOG_FATAL
+2018-10-10 17:46:24 INFO    client.c             #25     Test timer thread
+2018-10-10 17:46:25 INFO    client.c             #25     Test timer thread
+2018-10-10 17:46:26 INFO    client.c             #25     Test timer thread
+2018-10-11 10:55:29 WARN    client.c             #16     LOG_WARN
+2018-10-11 10:55:29 DEBUG   client.c             #17     LOG_DEBUG
+2018-10-11 10:55:29 INFO    client.c             #18     LOG_INFO
+2018-10-11 10:55:29 ERROR   client.c             #19     LOG_ERROR
+2018-10-11 10:55:29 FATAL   client.c             #20     LOG_FATAL
+2018-10-11 10:55:29 INFO    client.c             #25     Test timer thread
+2018-10-11 10:55:30 INFO    client.c             #25     Test timer thread
+2018-10-11 10:55:31 INFO    client.c             #25     Test timer thread
+2018-10-11 10:55:32 INFO    client.c             #25     Test timer thread
+2018-10-11 10:55:33 INFO    client.c             #25     Test timer thread
+2018-10-11 10:55:34 INFO    client.c             #25     Test timer thread
